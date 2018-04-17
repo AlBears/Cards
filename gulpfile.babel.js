@@ -13,6 +13,23 @@ gulp.task("server:build",
 		"server:clean",
 		compileServer
 	));
+    
+gulp.task(
+	"server:watch",
+	gulp.series(
+		"server:build",
+		watchServer
+	));
+    
+gulp.task(
+	"server:dev",
+	gulp.series(
+		"server:build",
+		gulp.parallel(
+			watchServer,
+			runServer
+		)
+	));
 
 function compileServer() {
 	return gulp.src("./src/server/**/*.js")
@@ -21,4 +38,19 @@ function compileServer() {
 		.pipe($.babel())
 		.pipe($.sourcemaps.write(".", {sourceRoot: path.join(__dirname, "src", "server")}))
 		.pipe(gulp.dest("./build"));
+}
+
+function watchServer() {
+	return gulp
+		.watch("./src/server/**/*.js", gulp.series(compileServer))
+		.on("error", () => {});
+}
+
+function runServer() {
+	return $.nodemon({
+		script: "./server.js",
+		watch: "build"
+		// ignore: ["**/__tests"],
+		// exec: "node --debug"
+	});
 }
