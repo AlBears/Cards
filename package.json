@@ -5,23 +5,31 @@
   "main": "server.js",
   "scripts": {
     "test": "node ./tests.js",
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development"
   },
   "author": "ALB",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
     "babel-plugin-syntax-class-properties": "^6.13.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
     "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^7.0.1",
     "gulp-changed": "^3.2.0",
@@ -30,11 +38,25 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-util": "^3.0.8",
     "jasmine": "^3.1.0",
+    "json-loader": "^0.5.7",
+    "lodash": "^4.17.5",
+    "node-sass": "^4.8.3",
     "pug": "^2.0.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router": "^4.2.0",
     "rimraf": "^2.6.2",
-    "source-map-support": "^0.5.4"
+    "sass-loader": "^7.0.1",
+    "source-map-support": "^0.5.4",
+    "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.6.0"
   },
   "devDependencies": {
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "react-hot-loader": "^4.1.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
   }
 }
