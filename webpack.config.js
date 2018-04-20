@@ -6,6 +6,8 @@ var path = require("path"),
 
 const vendor = [
 		"lodash",
+		"react",
+		"react-dom"
 	],
 	mode = process.env.NODE_ENV,
 	isDebug = mode !== "production",

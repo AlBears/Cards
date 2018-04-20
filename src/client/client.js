@@ -1,3 +1,8 @@
 import "./client.scss";
 
-console.log('TRY TO LOG 77778');
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import AppContainer from './components/app';
+
+ReactDOM.render(<AppContainer/>, document.getElementById('mount'));
