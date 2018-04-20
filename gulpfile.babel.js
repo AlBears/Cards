@@ -111,7 +111,23 @@ const consoleStats = {
 	version: false
 };
 
-gulp.task("client:build", buildClient);
+gulp.task("client:clean", cb => {
+	rimraf("./public/build", () => cb());
+});
+
+gulp.task(
+	"client:build",
+	gulp.series(
+		"client:clean",
+		buildClient
+	));
+
+gulp.task(
+	"client:dev",
+	gulp.series(
+		"client:clean",
+		watchClient
+	));
 
 function buildClient(cb) {
 	webpack(webpackConfig, (err, stats) => {
@@ -124,3 +140,20 @@ function buildClient(cb) {
 		cb();
 	});
 }
+
+function watchClient() {
+	const WebpackDevServer = require("webpack-dev-server");
+	const compiler = webpack(webpackConfig);
+	const server = new WebpackDevServer(compiler, {
+		publicPath: "/build/",
+		hot: true,
+		stats: consoleStats
+	});
+
+	server.listen(8080, () => {});
+}
+
+// -----------------------------------
+// Other Tasks
+gulp.task("dev", gulp.parallel("server:dev", "client:dev"));
+gulp.task("build", gulp.parallel("server:build", "client:build"));
