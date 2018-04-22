@@ -6,8 +6,7 @@
   "scripts": {
     "test": "node ./tests.js",
     "start": "node ./server.js",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "webpack": "node_modules/.bin/webpack --config ./webpack.config.js"
   },
   "author": "ALB",
   "license": "ISC",
@@ -23,7 +22,6 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",
@@ -46,8 +44,12 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "rimraf": "^2.6.2",
+    "rxjs": "^5.5.10",
     "sass-loader": "^7.0.1",
+    "socket.io": "^2.1.0",
+    "socket.io-client": "^2.1.0",
     "source-map-support": "^0.5.4",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",

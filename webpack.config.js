@@ -7,11 +7,14 @@ var path = require("path"),
 const vendor = [
 		"lodash",
 		"react",
-		"react-dom"
+		"react-dom",
+		"react-router-dom",
+		"socket.io-client",
+		"rxjs"
 	],
 	mode = process.env.NODE_ENV,
 	isDebug = mode !== "production",
-	devtool = isDebug ? 'source-map' : '',
+	devtool = isDebug ? 'eval-source-map' : '',
 	plugins = [
 		new webpack.DefinePlugin({
 			"process.env": {
@@ -55,6 +58,7 @@ const vendor = [
 	clientEntry = ["babel-polyfill", "./src/client/client.js"];
 
 let publicPath = "/build/";
+console.log(mode);
 
 if (isDebug) {
 	plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -84,8 +88,8 @@ if (isDebug) {
     
 const config =  {
 	name: "client",
-	devtool,
 	mode,
+	devtool,
 	entry: {
 		app: clientEntry,
 		vendor
