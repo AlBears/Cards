@@ -1,5 +1,6 @@
 import "./lobby.scss";
 import React, { Component } from "react";
+import Chat from './chat';
 
 const Lobby = () => {
 	return (
@@ -22,6 +23,10 @@ class LobbyContainer extends Component {
 		this._joinGame = (game) => {
 			console.log(`TODO: JOIN GAME ${game.title}`);
 		};
+
+		this._sendMessage = (message) => {
+			console.log(`Sending ${message}`);
+		};
 	}
 	render() {
 		const games = [
@@ -31,9 +36,22 @@ class LobbyContainer extends Component {
 			{title:"game4", id:4, players:["one", "two", "three"]}
 		];
 
+		const opSendMessage = {can:true, inProgress:false};
+		const messages = [
+			{index:1, name:"Person", message:"Hello"},
+			{index:2, name:"Person2", message:"ddfdfdf"},
+			{index:3, name:"Person3", message:"yuuyyuyyuy"},
+			{index:4, name:"Person4", message:"jkkjkjkjk"},
+			{index:5, name:"Person5", message:"9o99o9o9oo9"},
+		];
+
 		return (
 			<div className="c-lobby">
 				<GameList games={games} joinGame={this._joinGame}/>
+				<Chat messages={messages} 
+					opSendMessage={opSendMessage}
+					sendMessage={this._sendMessage}
+				/>
 			</div>
 		);
 	}
