@@ -7,6 +7,7 @@ import AppContainer from './components/app';
 import {Dispatcher} from "shared/dispatcher";
 import * as A from "./actions";
 import createStores from "./stores";
+import { StoreProvider } from "./lib/component";
 
 // ----------------------------
 // Services
@@ -21,9 +22,11 @@ const stores = createStores(services);
 // ----------------------------
 // Render
 ReactDOM.render(
-	<BrowserRouter>
-		<AppContainer/>
-	</BrowserRouter>, 
+	<StoreProvider stores={stores} services={services}>
+		<BrowserRouter>
+			<AppContainer/>
+		</BrowserRouter>
+	</StoreProvider>, 
 	document.getElementById('mount'));
 
 
