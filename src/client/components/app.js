@@ -1,16 +1,21 @@
 import './app.scss';
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import {ContainerBase} from "../lib/component";
+import dialogTypes from './dialogs';
 
 import Lobby from './lobby';
 import Game from './game';
 
-class AppContainer extends Component {
+class AppContainer extends ContainerBase {
 	componentDidMount() {
-		console.log('HEY THERE 23232323');
+		console.log('CHECK');
+		const {stores: {app}} = this.context;
+		this.subscribe(app.dialogs$, dialogs => this.setState({dialogs}));
 	}
 	render() {
+		console.log(this.state && this.state.dialogs);
 		return (
 			<div className = { 'c-application' }>	
 				<Switch>
